@@ -1,4 +1,4 @@
-FROM microsoft/windowsservercore AS builder
+FROM mcr.microsoft.com/windows/servercore AS builder
 SHELL ["cmd", "/S", "/C"]
 
 LABEL maintainer "florian.stosse@safrangroup.com"
@@ -25,7 +25,7 @@ RUN \
   --add Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset \
   --installPath C:/BuildTools
 
-FROM microsoft/windowsservercore:ltsc2016
+FROM mcr.microsoft.com/windows/servercore
 
 COPY --from=builder C:/BuildTools/ C:/BuildTools
 
