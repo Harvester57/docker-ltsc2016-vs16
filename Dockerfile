@@ -1,4 +1,4 @@
-FROM microsoft/windowsservercore:ltsc2016 AS builder
+FROM microsoft/windowsservercore AS builder
 SHELL ["cmd", "/S", "/C"]
 
 LABEL maintainer "florian.stosse@safrangroup.com"
