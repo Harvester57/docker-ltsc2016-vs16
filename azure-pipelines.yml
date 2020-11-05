@@ -17,8 +17,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: 'windows-latest'
-    container: mcr.microsoft.com/windows/servercore:ltsc2016
+      vmImage: 'vs2017-win2016'
     steps:
       - task: Docker@2
         inputs:
