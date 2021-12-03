@@ -1,10 +1,10 @@
-FROM mcr.microsoft.com/windows/servercore:20H2-KB5007186-amd64 AS builder
+FROM mcr.microsoft.com/windows/servercore:1909-KB5003169-amd64 AS builder
 SHELL ["cmd", "/S", "/C"]
 
 LABEL maintainer "florian.stosse@safrangroup.com"
 LABEL lastupdate "27-11-2021"
 LABEL author "Florian Stosse"
-LABEL description "Windows 10 LTSC 2022 image, with Microsoft Build Tools 2019 (v16.0)"
+LABEL description "Windows 10 LTSC 2019 image, with Microsoft Build Tools 2019 (v16.0)"
 LABEL license "MIT license"
 
 # Set up environment to collect install errors.
@@ -25,7 +25,7 @@ RUN \
   --add Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset \
   --installPath C:/BuildTools
 
-FROM mcr.microsoft.com/windows/servercore:20H2-KB5007186-amd64
+FROM mcr.microsoft.com/windows/servercore:1909-KB5003169-amd64
 
 COPY --from=builder C:/BuildTools/ C:/BuildTools
 
