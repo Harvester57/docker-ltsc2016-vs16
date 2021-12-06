@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows/servercore:1809-KB5007206 AS builder
+FROM mcr.microsoft.com/windows/servercore:2004 AS builder
 SHELL ["cmd", "/S", "/C"]
 
 LABEL maintainer "florian.stosse@safrangroup.com"
@@ -25,7 +25,7 @@ RUN \
   --add Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset \
   --installPath C:/BuildTools
 
-FROM mcr.microsoft.com/windows/servercore:1809-KB5007206
+FROM mcr.microsoft.com/windows/servercore:2004
 
 COPY --from=builder C:/BuildTools/ C:/BuildTools
 
