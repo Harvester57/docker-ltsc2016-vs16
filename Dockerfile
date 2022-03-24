@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/windows/servercore:1809 AS builder
+FROM mcr.microsoft.com/windows/servercore:10.0.17763.2686-amd64 AS builder
 SHELL ["cmd", "/S", "/C"]
 
 LABEL maintainer "florian.stosse@safrangroup.com"
-LABEL lastupdate "27-11-2021"
+LABEL lastupdate "2022-03-24"
 LABEL author "Florian Stosse"
 LABEL description "Windows 10 LTSC 2019 image, with Microsoft Build Tools 2019 (v16.0)"
 LABEL license "MIT license"
@@ -25,7 +25,7 @@ RUN \
   --add Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset \
   --installPath C:/BuildTools
 
-FROM mcr.microsoft.com/windows/servercore:1809
+FROM mcr.microsoft.com/windows/servercore:10.0.17763.2686-amd64
 
 COPY --from=builder C:/BuildTools/ C:/BuildTools
 
