@@ -1,18 +1,12 @@
 name: Windows image build
 
-
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-
   build:
-
     runs-on: windows-2019
-
     steps:
     -
       name: Login to DockerHub
@@ -20,8 +14,8 @@ jobs:
       with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
     - 
+      name: Checkout
       uses: actions/checkout@v2
     - 
       name: Build the Docker image
