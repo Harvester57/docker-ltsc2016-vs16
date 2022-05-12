@@ -17,11 +17,10 @@ jobs:
     - 
       name: Checkout
       uses: actions/checkout@v3
-    - 
-      name: Build the Docker image
-      run: |
-        docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/windows-ltsc2016-vs2019:latest
-        docker push ${{ secrets.DOCKERHUB_USERNAME }}/windows-ltsc2016-vs2019:latest
-        docker logout
-      
-      
+    -
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/windows-ltsc2016-vs2019:latest
