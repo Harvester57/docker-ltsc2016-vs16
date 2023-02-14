@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/windows/servercore:1809-KB5022840-amd64 AS builder
 SHELL ["cmd", "/S", "/C"]
 
 LABEL maintainer "florian.stosse@safrangroup.com"
-LABEL lastupdate "2022-05-12"
+LABEL lastupdate "2023-02-14"
 LABEL author "Florian Stosse"
 LABEL description "Windows 10 LTSC 2019 image, with Microsoft Build Tools 2019 (v16.0)"
 LABEL license "MIT license"
@@ -24,6 +24,8 @@ RUN \
   --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended \
   --add Microsoft.VisualStudio.Component.VC.Llvm.Clang \
   --add Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset \
+  --add Microsoft.VisualStudio.Component.VC.ATLMFC \
+  --add Microsoft.VisualStudio.Component.VC.CLI.Support \
   --installPath C:/BuildTools
 
 FROM mcr.microsoft.com/windows/servercore:1809-KB5022840-amd64
