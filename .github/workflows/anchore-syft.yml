@@ -1,0 +1,52 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow checks out code, builds an image, performs a container image
+# scan with Anchore's Syft tool, and uploads the results to the GitHub Dependency
+# submission API.
+
+# For more information on the Anchore sbom-action usage
+# and parameters, see https://github.com/anchore/sbom-action. For more
+# information about the Anchore SBOM tool, Syft, see
+# https://github.com/anchore/syft
+name: Anchore Syft SBOM scan
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  Anchore-Build-Scan:
+    permissions:
+      actions: read
+      contents: write # required to upload to the Dependency submission API
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - 
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v6
+        with:
+          push: false
+          load: true
+          tags: localbuild/testimage:latest
+      - 
+        name: Scan the image and upload dependency results
+        uses: anchore/sbom-action@v0.19.0
+        with:
+          image: localbuild/testimage:latest
+          artifact-name: github.sbom.json
+          dependency-snapshot: false
+          format: cyclonedx
