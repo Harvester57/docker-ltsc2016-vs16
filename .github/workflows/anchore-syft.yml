@@ -13,7 +13,7 @@ jobs:
     permissions:
       actions: read
       contents: write # required to upload to the Dependency submission API
-    runs-on: windows-2019
+    runs-on: windows-2025
     steps:
       -
         name: Set up Docker Buildx
