@@ -1,11 +1,11 @@
 # Cf. https://hub.docker.com/_/microsoft-windows-servercore
-FROM mcr.microsoft.com/windows/servercore:1809-KB5059091-amd64@sha256:c2aaf8f2dc50fe2085a123945e8b7908b89e3c05cba572f33c9550b5418f29ed AS builder
+FROM mcr.microsoft.com/windows/servercore:ltsc2025-KB5059087-amd64@sha256:48710be5ea03b5bc66f55d3cd5c0036244923bc52c02d95c9d3c98b316721c6e
 SHELL ["cmd", "/S", "/C"]
 
 LABEL maintainer="florian.stosse@gmail.com"
 LABEL lastupdate="2025-04-27"
 LABEL author="Florian Stosse"
-LABEL description="Windows 10 LTSC 2019 image, with Microsoft Build Tools 2019 (v16.0)"
+LABEL description="Windows 10 LTSC 2025 image, with Microsoft Build Tools 2019 (v16.0)"
 LABEL license="MIT license"
 
 # Set up environment to collect install errors.
@@ -28,7 +28,7 @@ RUN \
   --add Microsoft.VisualStudio.Component.VC.CLI.Support \
   --installPath C:/BuildTools
 
-FROM mcr.microsoft.com/windows/servercore:1809-KB5059091-amd64@sha256:c2aaf8f2dc50fe2085a123945e8b7908b89e3c05cba572f33c9550b5418f29ed
+FROM mcr.microsoft.com/windows/servercore:ltsc2025-KB5059087-amd64@sha256:48710be5ea03b5bc66f55d3cd5c0036244923bc52c02d95c9d3c98b316721c6e
 
 COPY --from=builder C:/BuildTools/ C:/BuildTools
 
