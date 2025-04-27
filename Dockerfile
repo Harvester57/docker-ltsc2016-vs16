@@ -2,11 +2,11 @@
 FROM mcr.microsoft.com/windows/servercore:1809-KB5059091-amd64@sha256:c2aaf8f2dc50fe2085a123945e8b7908b89e3c05cba572f33c9550b5418f29ed AS builder
 SHELL ["cmd", "/S", "/C"]
 
-LABEL maintainer "florian.stosse@gmail.com"
-LABEL lastupdate "2025-04-27"
-LABEL author "Florian Stosse"
-LABEL description "Windows 10 LTSC 2019 image, with Microsoft Build Tools 2019 (v16.0)"
-LABEL license "MIT license"
+LABEL maintainer="florian.stosse@gmail.com"
+LABEL lastupdate="2025-04-27"
+LABEL author="Florian Stosse"
+LABEL description="Windows 10 LTSC 2019 image, with Microsoft Build Tools 2019 (v16.0)"
+LABEL license="MIT license"
 
 # Set up environment to collect install errors.
 ADD https://aka.ms/vscollect.exe C:/TEMP/collect.exe
