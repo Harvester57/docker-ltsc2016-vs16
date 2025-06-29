@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2025@sha256:4c8150b6fe78cac412f246
 SHELL ["cmd", "/S", "/C"]
 
 LABEL maintainer="florian.stosse@gmail.com"
-LABEL lastupdate="2025-06-22"
+LABEL lastupdate="2025-06-29"
 LABEL author="Florian Stosse"
 LABEL description="Windows 10 LTSC 2025 image, with Microsoft Build Tools 2019 (v16.0)"
 LABEL license="MIT license"
