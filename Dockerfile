@@ -1,5 +1,5 @@
 # Cf. https://hub.docker.com/_/microsoft-windows-servercore
-FROM mcr.microsoft.com/windows/servercore:ltsc2025-amd64@sha256:9005880509824e2cc11e32cd91f40a9a3562f6323d9c7bc444683a7ea65b935a
+FROM mcr.microsoft.com/windows/servercore:ltsc2025-amd64@sha256:32763650b9e2fb898827b97d7c57bdf1aaf8fd901462c7481613a68af3525e14
 SHELL ["cmd", "/S", "/C"]
 
 LABEL maintainer="florian.stosse@gmail.com"
@@ -28,7 +28,7 @@ RUN \
   --add Microsoft.VisualStudio.Component.VC.CLI.Support \
   --installPath C:/BuildTools
 
-FROM mcr.microsoft.com/windows/servercore:ltsc2025-amd64@sha256:9005880509824e2cc11e32cd91f40a9a3562f6323d9c7bc444683a7ea65b935a
+FROM mcr.microsoft.com/windows/servercore:ltsc2025-amd64@sha256:32763650b9e2fb898827b97d7c57bdf1aaf8fd901462c7481613a68af3525e14
 
 COPY --from=builder C:/BuildTools/ C:/BuildTools
 
